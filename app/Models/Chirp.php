@@ -9,5 +9,5 @@ class Chirp extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['message', 'user_id'];
+    protected $fillable = ['message'];
 }
