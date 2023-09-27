@@ -56,7 +56,14 @@ class ChirpController extends Controller
      */
     public function update(Request $request, Chirp $chirp)
     {
-        //
+        $validated = $request->validate([
+            'message' => ['required', 'min:3', 'max:255']
+        ]);
+
+        $chirp->update($validated);
+
+        return to_route('chirps.index')
+            ->with('status', __('Chirp updated succesfully!'));
     }
 
     /**
