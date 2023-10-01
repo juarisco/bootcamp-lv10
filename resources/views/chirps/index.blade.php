@@ -68,6 +68,11 @@
                                 </x-slot>
                                 <x-slot name="content">
                                     <x-dropdown-link :href="route('chirps.edit', $chirp)">{{ __('Edit Chirp') }}</x-dropdown-link>
+                                    <form action="{{ route('chirps.destroy', $chirp) }}" method="post">
+                                        @csrf @method('DELETE')
+                                        <x-dropdown-link :href="route('chirps.destroy', $chirp)"
+                                            onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Delete Chirp') }}</x-dropdown-link>
+                                    </form>
                                 </x-slot>
                             </x-dropdown>
                         @endcan
